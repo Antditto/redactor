@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "node server/server.js",
     "dev": "concurrently \"ng serve\" \"nodemon /server/server.js\"",
-    "prod": "concurrently \"ng build -aot -prod && node/server/server.js\"",
+    "prod": "concurrently \"ng build -aot -prod && node /server/server.js\"",
     "test": "ng test",
     "lint": "ng lint",
     "postinstall": "ng build --aot -prod"
@@ -15,6 +15,8 @@
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/cdk": "^6.4.7",
+    "@angular/cli": "~6.2.1",
+    "@angular/compiler-cli": "^6.1.0",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -32,8 +34,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
-    "@angular/cli": "~6.2.1",
-    "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
