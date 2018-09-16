@@ -18,8 +18,8 @@ export class UploadService {
       }
       // create a new multipart-form for every file
       const formData: FormData = new FormData();
-      formData.append('file', file, file.name);
       formData.append('keywordString', keyword);
+      formData.append('file', file, file.name);
       // create a http-post request and pass the form
       // tell it to report the upload progress
       this.url = document.location.href;
