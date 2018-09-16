@@ -60,11 +60,11 @@ export class DialogComponent implements OnInit {
     if (!this.progress) {
       this.showError('Incorrect File type. Please convert to .txt');
     }
-    console.log(this.progress);
+    // console.log(this.progress);
     for (const key in this.progress) {
       if (this.progress.hasOwnProperty(key)) {
         this.progress[key].progress.subscribe(val => {
-          console.log(val)
+          // console.log(val)
           if (!val && val != 0) {
             this.showError('Upload Failed, Please Retry');
           }
