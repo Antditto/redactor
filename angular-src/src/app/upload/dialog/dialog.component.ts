@@ -65,7 +65,7 @@ export class DialogComponent implements OnInit {
       if (this.progress.hasOwnProperty(key)) {
         this.progress[key].progress.subscribe(val => {
           console.log(val)
-          if (!val) {
+          if (!val && val != 0) {
             this.showError('Upload Failed, Please Retry');
           }
         });
