@@ -20,7 +20,7 @@ module.exports = function(req, res, file, keywordString) {
   function replaceAll(str, keyword, replace) {
     let lcStr = str.toLowerCase();
     let lcKeyword = keyword.toLowerCase();
-    if (lcStr.includes(lcKeyword)){
+    if (lcStr.indexOf(lcKeyword) != -1){
       return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
     } else {
       return str;
