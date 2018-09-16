@@ -4,7 +4,9 @@ const path = require('path');
 const upload = require('controllers/upload');
 const cors = require('cors');
 
-const port = 3000;
+//const port = 3000;
+const port = process.env.PORT || 5000;
+
 
 const app = express();
 
