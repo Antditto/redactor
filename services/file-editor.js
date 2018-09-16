@@ -20,6 +20,8 @@ module.exports = function(req, res, file, keywordString) {
   function replaceAll(str, keyword, replace) {
     if (str.indexOf(keyword) != -1) {
       return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
+    } else {
+      return str
     }
   }
 
