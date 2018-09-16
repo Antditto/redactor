@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
-const url = 'http://localhost:3000/upload';
-
 @Injectable()
 export class UploadService {
-  constructor(private http: HttpClient, public snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, public snackBar: MatSnackBar, private router: Router) {}
+  url;
 
   public upload(files: Set<File>, keyword): { [key: string]: Observable<number> } {
     // this will be the our resulting map
@@ -23,7 +23,8 @@ export class UploadService {
       formData.append('keywordString', keyword);
       // create a http-post request and pass the form
       // tell it to report the upload progress
-      const req = new HttpRequest('POST', url, formData, {
+      this.url = this.router.url;
+      const req = new HttpRequest('POST', this.url, formData, {
         reportProgress: true,
         responseType: 'text'
       });
@@ -72,6 +73,7 @@ export class UploadService {
   }
 
   downloadFile(data) {
+    this.url = this.router.url;
     const blob = new Blob([data], { type: 'text/plain' });
     const fileLocation = window.URL.createObjectURL(blob);
     const pwa = window.open(fileLocation);
