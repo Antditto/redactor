@@ -1,6 +1,7 @@
 module.exports = function(keywordString) {
   //running match test
-  const splitted = keywordString.match(/\w+|["'](?:\\["']|[^"'])+['"]/g);
+  const splitted = keywordString.match(/(['"])((?:\\\1|.)+?)\1|([^\s,"']+)/g);
+  //const splitted = keywordString.match(/\w+|["'](?:\\["']|[^"'])+['"]/g);
   //sort to handle keywords within keywords correctly
   splitted.sort((a, b) => b.length - a.length)
   //replacing quotes with empty string for evaluation
