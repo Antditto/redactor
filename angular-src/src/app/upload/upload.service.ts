@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class UploadService {
-  constructor(private http: HttpClient, public snackBar: MatSnackBar, private router: Router) {}
+  constructor(private http: HttpClient, public snackBar: MatSnackBar) {}
   url;
 
   public upload(files: Set<File>, keyword): { [key: string]: Observable<number> } {
@@ -23,8 +22,8 @@ export class UploadService {
       formData.append('keywordString', keyword);
       // create a http-post request and pass the form
       // tell it to report the upload progress
-      this.url = this.router.url;
-      const req = new HttpRequest('POST', this.url, formData, {
+      this.url = document.location.href;
+      const req = new HttpRequest('POST', '/upload', formData, {
         reportProgress: true,
         responseType: 'text'
       });
@@ -73,7 +72,7 @@ export class UploadService {
   }
 
   downloadFile(data) {
-    this.url = this.router.url;
+    this.url = document.location.href;
     const blob = new Blob([data], { type: 'text/plain' });
     const fileLocation = window.URL.createObjectURL(blob);
     const pwa = window.open(fileLocation);
