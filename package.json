@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "node server/server.js",
+    "dev": "concurrently \"ng serve\" \"nodemon /server/server.js\"",
     "prod": "concurrently \"ng build -aot -prod && node/server/server.js\"",
     "test": "ng test",
     "lint": "ng lint",
@@ -25,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
+    "nodemon": "^1.18.4",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
