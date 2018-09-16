@@ -18,7 +18,11 @@ module.exports = function(req, res, file, keywordString) {
 
   // Replace function for each stream
   function replaceAll(str, keyword, replace) {
-    return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
+    if (str.includes(keyword)){
+      return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
+    } else {
+      return str;
+    }
   }
 
   //Replace function loop for each keyword in array
