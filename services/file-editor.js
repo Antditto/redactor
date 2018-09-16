@@ -34,8 +34,9 @@ module.exports = function(req, res, file, keywordString) {
           replace += testKeyword[j];
         }
       }
-
-      str = replaceAll(str, keywordArray[i], replace);
+      if (str.indexOf(keywordArray[i]) != -1){
+        str = replaceAll(str, keywordArray[i], replace);
+      }
     }
     return str;
   }
@@ -75,7 +76,9 @@ module.exports = function(req, res, file, keywordString) {
       line = ' ';
     }
 
-    line = line.replace('|', '');
+    if (line.indexOf('|') !== -1) {
+      line = line.replace('|', '');
+    }
 
     if (editString) {
       first = false;
