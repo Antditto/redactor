@@ -56,16 +56,16 @@ module.exports = function(req, res, file, keywordString) {
     editString = '';
     first = true;
     console.log('done writing')
-
-    fs.rename('./output-file.txt', file.path, err => {
-      if (err) {
-        // handle error
-        console.log(err)
-      } else {
-        console.log('redacted file')
-        res.end();
-      }
-    })
+    console.log('redacted file')
+    res.end();
+    // fs.rename('./output-file.txt', file.path, err => {
+    //   if (err) {
+    //     // handle error
+    //     console.log(err)
+    //   } else {
+    //
+    //   }
+    // })
   })
 
   // Read the file and replace any text that matches
