@@ -85,7 +85,6 @@ module.exports = function(req, res, file, keywordString) {
     }
     // Do some evaluation to determine if the text matches
     editString = replaceAllLoop(editString, keywordArray);
-    console.log(editString);
 
     let editedArray = [];
 
