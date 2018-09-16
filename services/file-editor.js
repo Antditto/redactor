@@ -18,7 +18,9 @@ module.exports = function(req, res, file, keywordString) {
 
   // Replace function for each stream
   function replaceAll(str, keyword, replace) {
-    return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
+    if (str.indexOf(keyword) != -1) {
+      return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
+    }
   }
 
   //Replace function loop for each keyword in array
@@ -34,9 +36,8 @@ module.exports = function(req, res, file, keywordString) {
           replace += testKeyword[j];
         }
       }
-      if (str.indexOf(keywordArray[i]) != -1){
-        str = replaceAll(str, keywordArray[i], replace);
-      }
+
+      str = replaceAll(str, keywordArray[i], replace);
     }
     return str;
   }
@@ -76,9 +77,7 @@ module.exports = function(req, res, file, keywordString) {
       line = ' ';
     }
 
-    if (line.indexOf('|') !== -1) {
-      line = line.replace('|', '');
-    }
+    line = line.replace('|', '');
 
     if (editString) {
       first = false;
