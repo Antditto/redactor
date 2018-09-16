@@ -18,7 +18,9 @@ module.exports = function(req, res, file, keywordString) {
 
   // Replace function for each stream
   function replaceAll(str, keyword, replace) {
-    if (str.includes(keyword)){
+    let lcStr = str.toLowerCase();
+    let lcKeyword = keyword.toLowerCase();
+    if (lcStr.includes(lcKeyword)){
       return str.replace(new RegExp('\\b' + escapeRegExp(keyword) + '\\b', 'gi'), replace);
     } else {
       return str;
